@@ -1,0 +1,43 @@
+
+<div style="color: black; background-color: antiquewhite; padding: 10px; border: 2px solid black;">
+<form id="myForm">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName">
+    <span class="error" style="color: red; display: none;">This field is required.</span>
+  
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName">
+    <span class="error" style="color: red; display: none;">This field is required.</span><br>
+  
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+    <span class="error" style="color: red; display: none;">This field is required.</span>
+  
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" name="phone">
+    <span class="error" style="color: red; display: none;">This field is required.</span>
+  
+    <button type="submit">Submit</button>
+  </form>
+</div>
+  
+  <script>
+    const form = document.getElementById("myForm");
+    const fields = form.querySelectorAll("input");
+    const errorMessages = form.querySelectorAll(".error");
+  
+    fields.forEach((field, index) => {
+      field.addEventListener("focus", () => {
+        for (let i = 0; i < index; i++) {
+          if (!fields[i].value.trim()) {
+            errorMessages[i].style.display = "inline"; 
+            fields[i].focus();
+            break;
+          } else {
+            errorMessages[i].style.display = "none"; 
+          }
+        }
+      });
+    });
+  </script>
+  

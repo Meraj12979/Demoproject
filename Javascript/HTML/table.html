@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> A  basic html table</title>
+   <style> table  {
+        border:1px solid black;
+        border-collapse : collapse;
+        margin: auto;
+        background-color: bisque
+    }
+   td, th {
+    border : 1px solid black;
+    padding : 10px;
+    }
+</style>
+</head>
+<body>
+    <h2 style="text-align: center;">Row table header </h2>
+    <table style="width: 100;">
+        <caption>Student Information</caption>
+        <tr>
+            <th>Name</th>
+            <th>Roll-no</th>
+            <th> Email id</th>
+            <th> City</th>
+        </tr>
+        <tr>
+            <td>Mitrasen Yadav</td>
+            <td>1802392</td>
+            <td>Mitrasen@gmail.com</td>
+            <td>Ayodhya</td>
+        </tr>
+        <tr>
+            <td>Mohan Yadav</td>
+            <td>1802393</td>
+            <td>Mohan@gmail.com</td>
+            <td>Rampur</td>
+        </tr>
+        <tr>
+            <td>Mufazal khan </td>
+            <td>1802394</td>
+            <td>Mufazal@gmail.com</td>
+            <td>Muzapharpur</td>
+        </tr>
+        <tr>
+            <td>Wakar khan </td>
+            <td>1802395</td>
+            <td>Wakar@gmail.com</td>
+            <td>Gaya</td>
+        </tr>
+        <tr>
+            <td>Mohsin khan </td>
+            <td>1802396</td>
+            <td>Mohasin@gmail.com</td>
+            <td>Siwan</td>
+        </tr>
+            
+    </table>  
+    
+    <h2 style="text-align: center;"> Column table header </h2>
+    <table style="background-color: aqua;">
+        <caption>Student Details</caption>
+     <tr>
+    <th>FirstName</th>
+    <td>Mahi</td>
+    <td>Mansi</td>
+    <td>Muskan</td>
+    </tr>
+     <tr>
+    <th>LastName</th>
+    <td>khan</td>
+    <td>Yadav</td>
+    <td>chaudhary</td>
+    </tr>
+     <tr>
+    <th>Age</th>
+    <td>24</td>
+    <td>20</td>
+    <td>21</td>
+    </tr>
+     <tr>
+    <th>city</th>
+    <td>lucknow</td>
+    <td>Jhansi</td>
+    <td>haryana</td>
+    </tr>
+
+    </table>
+ <h2 style="text-align: center;">Colspan Attribute</h2>
+ <table style="background-color: blue;">
+<tr>
+    <th colspan="2">Name</th>
+    <th>Age</th>
+</tr>
+ <tr>
+    <td>Jill</td>
+    <td>Smith</td>
+    <td>30</td>
+ </tr>
+ <tr>
+    <td>Eve</td>
+    <td>Jackson</td>
+    <td>40</td>
+ </tr>
+ </table>
+ 
+
+ <h2 style="text-align: center;">Rowspan Attribute</h2>
+ <table style="background-color: brown;">
+ <tr>
+  <th>Name</th>
+  <td>John</td>
+ </tr>
+ <tr>
+<th rowspan="2">Phone</th>
+<td>9877404494</td>
+ </tr>
+<tr>
+    <td>7257879416</td>
+</tr>
+
+ </table>
+
+</body>
+</html>

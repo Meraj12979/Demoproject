@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <title>Calculator Clone</title>
+</head>
+<body>
+    <div class="Calculator">
+        <input type="text" id="display" placeholder="0" readonly>
+        <div>
+            <button class="operator" id="clear">AC</button>
+            <button class="operator" id="delete">DEL</button>
+            <button class="operator">%</button>
+            <button class="operator">/</button>   
+        </div>
+        <div>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button class="operator">*</button>
+        </div>
+        <div>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button class="operator">-</button>
+        </div>
+        <div>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button class="operator">+</button>
+        </div>
+        <div>
+            <button>00</button>
+            <button>0</button>
+            <button>.</button>
+            <button class="equalBtn">=</button>
+        </div>
+    </div>
+    <script>
+        // Get the display input field
+        const display = document.getElementById("display");
+
+        // Get all the buttons
+        const buttons = Array.from(document.querySelectorAll("button"));
+
+        let currentInput = localStorage.getItem('calculatorInput') || "";
+
+        // Initialize the display with stored value or 0
+        display.value = currentInput || "0";
+
+        // Event listener for each button
+        buttons.forEach(button => {
+            button.addEventListener("click", (event) => {
+                const value = event.target.innerText;
+
+                if (value === "AC") {
+                    // Clear the display and localStorage
+                    currentInput = "";
+                    display.value = "0";
+                    localStorage.removeItem('calculatorInput');
+                } else if (value === "DEL") {
+                    // Delete the last character
+                    currentInput = currentInput.slice(0, -1);
+                    display.value = currentInput || "0";
+                    localStorage.setItem('calculatorInput', currentInput);
+                } else if (value === "=") {
+                    // Evaluate the expression
+                    try {
+                        currentInput = eval(currentInput).toString();
+                        display.value = currentInput;
+                        localStorage.setItem('calculatorInput', currentInput);
+                    } catch (error) {
+                        display.value = "Error";
+                        localStorage.removeItem('calculatorInput'); // Clear in case of error
+                    }
+                } else if (value === "%") {
+                    // Calculate percentage
+                    currentInput = (parseFloat(currentInput) / 100).toString();
+                    display.value = currentInput;
+                    localStorage.setItem('calculatorInput', currentInput);
+                } else {
+                    // Append the value to the current input
+                    currentInput += value;
+                    display.value = currentInput;
+                    localStorage.setItem('calculatorInput', currentInput);
+                }
+            });
+        });
+    </script>   
+</body>
+</html>

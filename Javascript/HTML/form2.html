@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Form Validation</title>
+</head>
+<body>
+    <h1>Login form</h1>
+    <form  id= "login form"   action="abc.html" >
+        Username: <input type="text" id="n1"><br><br>
+        Password: <input type="password" id="n2"><br><br>
+        <input type="submit" value="login">
+    </form>
+    
+    <script>
+        document.getElementById("login form").addEventListener("submit",function(event){
+            const username = document.getElementById("n1").value;
+            const password = document.getElementById("n2").value;
+
+            // Validate fields
+            if (username === "" || password === "") {
+                alert("All fields are mandatory.");
+                event.preventDefault(); // Prevent form submission
+            }else{
+
+            // Store data in local storage
+            localStorage.setItem("username", username);
+            localStorage.setItem("password", password);
+            }
+           
+        });
+    </script>
+</body>
+</html>
