@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h3 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: steelblue;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .mobile-number-container {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+
+        #country-code {
+            width: 30%;
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        #mobile {
+            width: 70%;
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        select[multiple] {
+            width: 200px;
+            height: auto;
+        }
+        input[type="checkbox"]:focus{  
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        #comments {
+            height: 10vh ; 
+        }
+        .homosapiens{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .row {
+            display: flex;
+            gap: 30px;
+        }
+
+        .row .form-group {
+            flex: 1;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    @keyframes bounce {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.2);
+        }
+    }
+
+    .bouncy {
+        animation: bounce 0.3s ease-in-out;
+    }
+
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Registration Form</h1>
+        <form id="registrationForm" onsubmit="return saveData();">
+            <h3>Personal Information</h3>
+            <div class="row">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" placeholder="Enter first name" required>
+                </div>
+                <div class="form-group">
+                    <label for="middleName">Middle Name</label>
+                    <input type="text" id="middleName" placeholder="Enter middle name">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" placeholder="Enter last name" required>
+                </div>
+            </div>
+
+            <h3>Birth Date</h3>
+            <div class="row">
+                <div class="form-group">
+                    <label for="birthMonth">Month</label>
+                    <select id="birthMonth" required>
+                        <option value="">Please Select</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="birthDay">Day</label>
+                    <select id="birthDay" required>
+                        <option value="">Please Select</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="birthYear">Year</label>
+                    <select id="birthYear" required>
+                        <option value="">Please Select</option>
+                    </select>
+                </div>
+            </div><br>
+
+            <div class="form-group">
+                <label>Gender:</label>
+                <div class="homosapiens">
+                    <input type="radio" id="male" name="gender" value="male" required>
+                    <label for="male">Male</label>
+
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label>
+
+                    <input type="radio" id="other" name="gender" value="other">
+                    <label for="other">Other</label>
+                </div>
+            </div><br>
+
+            <h3>Address</h3>
+            <div class="form-group">
+                <label for="streetAddress">Street Address</label>
+                <input type="text" id="streetAddress" placeholder="Enter street address" required>
+            </div>
+            <div class="form-group">
+                <label for="streetAddress2">Street Address Line 2</label>
+                <input type="text" id="streetAddress2" placeholder="Enter street address line 2">
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" placeholder="Enter city" required>
+                </div>
+                <div class="form-group">
+                    <label for="state">State / Province</label>
+                    <input type="text" id="state" placeholder="Enter state/province" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="postalCode">Postal / Zip Code</label>
+                <input type="number" id="postalCode" placeholder="Enter postal/zip code" required>
+            </div>
+
+            <h3>Contact Information</h3>
+            <div class="form-group">
+                <label for="email">* Email</label>
+                <input type="email" id="email" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <div class="mobile-number-container">
+                    <select id="country-code">
+                        <option value="+91">+91 (India)</option>
+                        <option value="+44">+44 (UK)</option>
+                        <option value="+1">+1 (USA)</option>
+                        <option value="+61">+61 (Australia)</option>
+                    </select>
+                    <input type="tel" id="mobile" placeholder="000-000-0000" maxlength="12" required oninput="formatPhoneNumber(this)">
+                </div>
+            </div><br>
+
+            <h3>Additional Information</h3>
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="company">Company Name</label>
+                    <input type="text" id="company" placeholder="Enter Company" required>
+                </div>
+                <div class="form-group">
+                    <label for="course">Select your course</label>
+                    <select id="course" name="course" multiple size="6" >
+                        <option value="computer_science">Computer Science</option>
+                        <option value="business_administration">Business Administration</option>
+                        <option value="engineering">Engineering</option>
+                        <option value="arts">Arts</option>
+                        <option value="medicine">Medicine</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+           
+            <div class="form-group">
+                <label for="hobbies">Select your hobbies:</label><br><br>
+    
+                <input type="checkbox" id="selectAll" name="selectAll" value="Select All" onclick="toggleSelectAll(this)">
+                <label for="selectAll">Select All</label><br>
+        
+                <input type="checkbox" id="reading" name="hobbies" value="reading" onclick="selectSingleCheckbox(this)">
+                <label for="reading">Reading</label><br>
+            
+                <input type="checkbox" id="traveling" name="hobbies" value="traveling" onclick="selectSingleCheckbox(this)">
+                <label for="traveling">Traveling</label><br>
+            
+                <input type="checkbox" id="music" name="hobbies" value="music" onclick="selectSingleCheckbox(this)">
+                <label for="music">Music</label><br>
+            
+                <input type="checkbox" id="cooking" name="hobbies" value="cooking" onclick="selectSingleCheckbox(this)">
+                <label for="cooking">Cooking</label><br>
+            
+                <input type="checkbox" id="other_hobbies" name="hobbies" value="other" onclick="selectSingleCheckbox(this)">
+                <label for="other_hobbies">Other</label><br>
+            </div><br>
+            
+
+            <div class="form-group">
+                <label for="comments">Additional Comments</label>
+                <textarea id="comments" placeholder="Enter any additional comments"></textarea>
+            </div><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+ <script>
+    
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const birthMonth = document.getElementById("birthMonth");
+    
+        months.forEach(month => {
+            let option = document.createElement("option");
+            option.value = month;
+            option.innerHTML = month;
+            birthMonth.appendChild(option);
+        });
+    
+        for (let i = 1; i <= 31; i++) {
+            let option = document.createElement("option");
+            option.value = i;
+            option.innerHTML = i;
+            document.getElementById("birthDay").appendChild(option);
+        }
+    
+        const currentYear = new Date().getFullYear();
+        for (let i = currentYear; i >= 1900; i--) {
+            let option = document.createElement("option");
+            option.value = i;
+            option.innerHTML = i;
+            document.getElementById("birthYear").appendChild(option);
+        }
+    
+        function formatPhoneNumber(input) {
+            let value = input.value.replace(/\D/g, "");
+            if (value.length > 10) value = value.slice(0, 10);
+            if (value.length >= 7) {
+                value = value.slice(0, 3) + '-' + value.slice(3, 6) + '-' + value.slice(6);
+            } else if (value.length >= 4) {
+                value = value.slice(0, 3) + '-' + value.slice(3);
+            }
+            input.value = value;
+        }
+    
+        let lastClicked = null; // Declare lastClicked variable
+    
+        document.querySelectorAll('input[type="radio"]').forEach((radio) => {
+            radio.addEventListener('click', function () {
+                this.classList.add('bouncy');
+                if (lastClicked === this) {
+                    this.checked = false;
+                    lastClicked = null;
+                } else {
+                    lastClicked = this;
+                }
+    
+                if (this.checked) {
+                    this.removeAttribute('name');
+                } else {
+                    this.setAttribute('name', 'gender');
+                }
+            });
+    
+            radio.addEventListener('animationend', function () {
+                this.classList.remove('bouncy');
+            });
+        });
+        function selectSingleCheckbox(checkbox) {
+            let checkboxes = document.querySelectorAll('input[name="hobbies"]');
+            checkboxes.forEach(function (item) {
+                if (item !== checkbox) {
+                    item.checked = false;
+                }
+            });
+
+        }
+        updateSelectAllState();
+function toggleSelectAll(selectAllCheckbox) {
+    const allHobbiesCheckboxes = document.querySelectorAll('input[name="hobbies"]:not(#selectAll)');
+    if(selectAllCheckbox.checked){
+    allHobbiesCheckboxes.forEach((checkbox) => {
+        checkbox.checked = true;  
+    });
+}else{allHobbiesCheckboxes.forEach((checkbox) => {
+    checkbox.checked = false; 
+
+});
+}
+}
+
+ updateSelectAllState();  
+
+
+function updateSelectAllState() {
+    const allHobbiesCheckboxes = document.querySelectorAll('input[name="hobbies"]:not(#selectAll)');
+    const selectAllCheckbox = document.getElementById('selectAll');
+
+    const allChecked = Array.from(allHobbiesCheckboxes).every(checkbox => checkbox.checked);
+    selectAllCheckbox.checked = allChecked;
+    const anyUnchecked = Array.from(allHobbiesCheckboxes).some(checkbox => !checkbox.checked);
+    selectAllCheckbox.indeterminate = !allChecked && anyUnchecked;
+}
+
+
+    
+        // Save Data
+        function saveData() {
+            const formData = {
+                firstName: document.getElementById("firstName").value,
+                middleName: document.getElementById("middleName").value,
+                lastName: document.getElementById("lastName").value,
+                birthMonth: document.getElementById("birthMonth").value,
+                birthDay: document.getElementById("birthDay").value,
+                birthYear: document.getElementById("birthYear").value,
+                gender: document.querySelector('input[name="gender"]:checked')?.value || "",
+                streetAddress: document.getElementById("streetAddress").value,
+                streetAddress2: document.getElementById("streetAddress2").value,
+                city: document.getElementById("city").value,
+                state: document.getElementById("state").value,
+                postalCode: document.getElementById("postalCode").value,
+                email: document.getElementById("email").value,
+                mobile: document.getElementById("mobile").value,
+                company: document.getElementById("company").value,
+                course: Array.from(document.getElementById("course").selectedOptions).map(option => option.value),
+                hobbies: Array.from(document.querySelectorAll('input[name="hobbies"]:checked')).map(checkbox => checkbox.value),
+                comments: document.getElementById("comments").value,
+            };
+            localStorage.setItem("formData", JSON.stringify(formData));
+            alert("Form data saved successfully!");
+            return false;
+        }
+    
+</script>
+  
+</body>
+</html>
