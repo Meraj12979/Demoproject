@@ -11,7 +11,8 @@
             justify-content: center;
             height: 100vh;
             background-color: rgb(2, 17, 30);
-        }
+            border-radius: 10px;
+               }
         .form-container {
             margin: 20px;
             flex-direction: column;
@@ -23,6 +24,11 @@
             border-radius: 10px;
             padding: 20px;
         }
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+    
         table {
             width: 100%;
             margin-top: 20px;
@@ -103,19 +109,16 @@
 <body onload="readAll()">
     <div class="container">
         <div class="form-container">
-            <h2>CRUD Operations</h2>
+            <h2 >CRUD Operations</h2>
 
-            <!-- Add Form -->
             <div class="form" id="add-form" style="display:none;">
                 <input type="text" id="new-name" placeholder="Enter Name">
                 <input type="email" id="new-email" placeholder="Enter Email">
                 <button onclick="addNew()">Add</button>
             </div>
 
-            <!-- Add Option Button -->
             <button class="add-button" onclick="showAddForm()">Add New</button>
 
-            <!-- Table -->
             <table>
                 <thead>
                     <tr>
@@ -131,11 +134,14 @@
     </div>
 
     <script>
-        let data = [
+        let data = JSON.parse(localStorage.getItem("data")) || [
             { id: 1, name: "Sami", email: "sami@gmail.com" },
             { id: 2, name: "Mahi", email: "mahi@gmail.com" },
+            { id: 3, name:  "Mitrasen", email: "mitra@gmail.com"},
         ];
-
+      function saveData(){
+        localStorage.setItem("data",JSON.stringify(data));
+      }
         function readAll() {
             const tabledata = document.querySelector(".data-table");
             let elements = "";
@@ -203,12 +209,13 @@
 
             const index = data.findIndex(record => record.id === id);
             data[index] = { id, name, email };
-
+            saveData();
             readAll();
         }
 
         function deleteRecord(id) {
             data = data.filter(item => item.id !== id);
+            saveData();
             readAll();
         }
     </script>
